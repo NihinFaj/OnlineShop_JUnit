@@ -77,6 +77,10 @@ public class SalesItemTest
         assertEquals(true, salesIte1.addComment("Fred", "Great - I perform brain surgery every week now!", 4));
     }
 
+    /**
+     * Test that 2 comments are added to an ite and also that 
+     * the comment count is correct
+     */
     @Test
     public void testTwoComments()
     {
@@ -85,7 +89,28 @@ public class SalesItemTest
         assertEquals(true, salesIte2.addComment("Ayo", "I would have prefered the Black console", 4));
         assertEquals(2, salesIte2.getNumberOfComments());
     }
+
+    /**
+     * Test that one comment author can not post two comments on one item
+     */
+    @Test
+    public void testExistingCommentAuthor()
+    {
+        SalesItem salesIte1 = new SalesItem("iPhone X", 90000);
+        assertEquals(true, salesIte1.addComment("Olumide", "This is a good device, however quite expensive", 4));
+        assertEquals(false, salesIte1.addComment("Olumide", "This device is too expensive", 3));
+    }
+
+    @Test
+    public void testCommentRatingBoundaries()
+    {
+        SalesItem salesIte1 = new SalesItem("Tesla", 3000000);
+        assertEquals(false, salesIte1.addComment("Donald", "This car is dope!", 6));
+        assertEquals(false, salesIte1.addComment("Vincent", "I thought it uses fuel", 0));
+    }
 }
+
+
 
 
 

@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * The test class CommentTest.
  *
- * @author  (Nihinlolamiwa Fajemilehin)
+ * @author (Nihinlolamiwa Fajemilehin)
  * @version (28th of December 2018)
  */
 public class CommentTest
