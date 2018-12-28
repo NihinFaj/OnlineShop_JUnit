@@ -76,7 +76,17 @@ public class SalesItemTest
         SalesItem salesIte1 = new SalesItem("Brain Surgery for Dummies.", 9899);
         assertEquals(true, salesIte1.addComment("Fred", "Great - I perform brain surgery every week now!", 4));
     }
+
+    @Test
+    public void testTwoComments()
+    {
+        SalesItem salesIte2 = new SalesItem("Playstation 4", 30000);
+        assertEquals(true, salesIte2.addComment("Nihinlolamiwa", "I love it!", 5));
+        assertEquals(true, salesIte2.addComment("Ayo", "I would have prefered the Black console", 4));
+        assertEquals(2, salesIte2.getNumberOfComments());
+    }
 }
+
 
 
 
