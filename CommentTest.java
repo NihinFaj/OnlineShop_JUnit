@@ -11,6 +11,8 @@ import org.junit.Test;
  */
 public class CommentTest
 {
+    private Comment comment1;
+
     /**
      * Default constructor for test class CommentTest
      */
@@ -26,6 +28,7 @@ public class CommentTest
     @Before
     public void setUp()
     {
+        comment1 = new Comment("Daniel", "I love it", 4);
     }
 
     /**
@@ -68,7 +71,7 @@ public class CommentTest
     @Test
     public void testDownVote()
     {
-        Comment comment1 = new Comment("Sam", "I wich I got the newer model, this one sucks!", 2);
+        Comment comment1 = new Comment("Sam", "I wish I got the newer model, this one sucks!", 2);
         comment1.upvote();
         comment1.upvote();
         comment1.upvote();

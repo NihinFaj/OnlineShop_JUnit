@@ -11,6 +11,9 @@ import org.junit.Test;
  */
 public class SalesItemTest
 {
+    private SalesItem salesIte1;
+    private SalesItem salesIte2;
+
     /**
      * Default constructor for test class SalesItemTest
      */
@@ -26,6 +29,10 @@ public class SalesItemTest
     @Before
     public void setUp()
     {
+        salesIte1 = new SalesItem("Chilli Sauce", 300);
+        salesIte2 = new SalesItem("Chicken Wings Pack", 400);
+        salesIte2.addComment("Sarah", "I love the taste", 5);
+        salesIte2.addComment("Whitney", "I hate the taste", 2);
     }
 
     /**
@@ -108,7 +115,26 @@ public class SalesItemTest
         assertEquals(false, salesIte1.addComment("Donald", "This car is dope!", 6));
         assertEquals(false, salesIte1.addComment("Vincent", "I thought it uses fuel", 0));
     }
+
+    @Test
+    public void testFindMostHelpfulComment()
+    {
+        SalesItem salesIte1 = new SalesItem("Nose Trimmer", 4000);
+        assertEquals(true, salesIte1.addComment("Kingsley", "It hurt my nose while using it, this product is cheat", 1));
+        assertEquals(true, salesIte1.addComment("Emma", "It works well", 3));
+        assertEquals(true, salesIte1.addComment("Allison", "I want to buy another for my grandpa", 5));
+        salesIte1.upvoteComment(0);
+        salesIte1.upvoteComment(0);
+        salesIte1.upvoteComment(2);
+        salesIte1.upvoteComment(2);
+        salesIte1.upvoteComment(2);
+        salesIte1.showInfo();
+        Comment comment1 = salesIte1.findMostHelpfulComment();
+        assertEquals("Allison", comment1.getAuthor());
+        assertEquals(3, comment1.getVoteCount());
+    }
 }
+
 
 
 
